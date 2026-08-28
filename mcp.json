@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "bool": {
+      "url": "https://bool.com/api/mcp"
+    }
+  }
+}
