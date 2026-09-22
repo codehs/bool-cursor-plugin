@@ -1,0 +1,13 @@
+{
+  "name": "bool",
+  "version": "0.1.0",
+  "description": "Official Bool plugin. Connects Grok Build to Bool's hosted MCP so agents can create, build, and publish Bool apps.",
+  "author": {
+    "name": "Bool",
+    "email": "hello@bool.com"
+  },
+  "homepage": "https://bool.com",
+  "repository": "https://github.com/codehs/bool-cursor-plugin",
+  "license": "MIT",
+  "keywords": ["bool", "build a bool app"]
+}
