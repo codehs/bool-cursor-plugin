@@ -9,16 +9,15 @@ description: >
 
 # Bool
 
-Connect Cursor to Bool through this plugin's MCP server at `https://bool.com/api/mcp`, then drive workspaces and projects with the official tools.
+Connect your client to Bool through this plugin's MCP server at `https://bool.com/api/mcp`, then drive workspaces and projects with the official tools.
 
 Docs: [bool.com/docs/mcp](https://bool.com/docs/mcp)
 
 ## Connect
 
-1. Settings → Tools & MCP → connect `bool`.
+1. Enable this plugin's `bool` MCP server in your client (Grok Build, Cursor, or any MCP client).
 2. Complete Bool OAuth. The connector URL is `https://bool.com/api/mcp`. Protected-resource metadata lives at `https://bool.com/.well-known/oauth-protected-resource`.
-3. If Connect opens a GitHub issues search instead of OAuth, the MCP config was rejected. This plugin ships a url-only host (no `type` field, no headers).
-4. Do not add a second Bool MCP server. Do not paste a personal MCP URL. Do not put API keys or tokens in this plugin.
+3. Do not add a second Bool MCP server. Do not paste a personal MCP URL. Do not put API keys or tokens in this plugin.
 
 ## First calls
 
