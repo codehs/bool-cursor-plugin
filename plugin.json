@@ -39,7 +39,7 @@
         "termsOfServiceURL": "https://bool.com/terms",
         "defaultPrompt": [
           "Make me a habit tracker where I can check off habits each day.",
-          "Show me my Bool projects.",
+          "Open Bool so I can browse my projects.",
           "Publish my blog and give me the link."
         ],
         "brandColor": "#0166FD",
@@ -63,10 +63,10 @@
               "expected_behavior": "Finds the existing Blog project, edits it, builds, and saves a version. The editor card shows the subtitle and the rest of the blog is unchanged."
             },
             {
-              "description": "Show the user's projects",
-              "prompt": "Show me my Bool projects.",
+              "description": "Open Bool to browse projects",
+              "prompt": "Open Bool so I can browse my projects.",
               "tools_triggered": "open_bool_editor",
-              "expected_behavior": "Opens the Bool editor's project list, showing the account's projects (CRM, Sprint tracker, Blog, Events)."
+              "expected_behavior": "Opens the Bool editor showing the account's project list (CRM, Sprint tracker, Blog, Events) as a card in the conversation."
             },
             {
               "description": "Publish an app",
