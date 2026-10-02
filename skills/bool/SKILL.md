@@ -25,11 +25,16 @@ Call `list_workspaces`, then `list_projects`. Pass `workspace_id` when the user 
 
 ## Build and iterate
 
-- New app: `create_project` with a `prompt`, then poll `get_project_status` until the turn finishes and `live_url` is set.
-- Blank project: `create_project` without a `prompt`, then `prompt_project` or `publish_project`.
-- Iterate: `prompt_project`, then poll `get_project_status`.
+You build the app yourself. Bool's own AI runs only when the user asks for it.
+
+- New app: `create_project` makes a blank project from a starter template. It takes only `name`, `template`, `workspace_id`, and `visibility`, and defaults to the workspace chosen in Bool's settings. A created project is an empty starter until `build_app` passes.
+- Build: `get_build_guide` for that `project_id`, and follow it. Read and edit with `list_files`, `read_file`, `create_file`, and `edit_file`. Use `delete_file`, `run_command`, `define_entity`, and `run_db_migration` when the guide calls for them. Run `build_app` until it passes, then `save_version`.
+- Iterate: the same loop on the existing project. Read its files first. Do not create a new project.
+- Publish: `publish_project` only when the user wants the app live.
+- Bool's AI: when the user asks for it, `prompt_project` on an existing project, then poll `get_project_status` until the turn finishes.
 - Templates: `list_templates` before passing `template` to `create_project`.
-- Remix: `fork_project` (user-facing word is remix). Then `prompt_project` if they want changes.
+- Remix: `fork_project` (user-facing word is remix). Then the build loop if they want changes.
+- Show projects: `open_bool_editor`. In clients that can't show the Bool editor, `render_project_widget` shows a status card.
 - Rename, description, or visibility: `update_project`. Visibility on an existing project can also go through `get_project`.
 - Move across workspaces: `move_project` (owner only).
 - Local backend link: `get_project_connection`. If `include_api_key` is true, the admin data key is owner-only. Never commit it.
@@ -42,26 +47,40 @@ Record tools (`list_records`, `create_records`, `update_record`, `delete_record`
 
 `define_entity` is additive. It creates a table or adds missing columns. It does not drop columns or change types.
 
+`run_db_migration` runs SQL on the project's database. Confirm with the user before SQL that drops or rewrites data.
+
 ## Live tools
 
 Use only these names. Do not invent tools.
 
+- `build_app`
+- `create_file`
 - `create_project`
 - `create_records`
 - `define_entity`
+- `delete_file`
 - `delete_project`
 - `delete_record`
+- `edit_file`
 - `fork_project`
+- `get_build_guide`
 - `get_project`
 - `get_project_connection`
 - `get_project_status`
 - `list_entities`
+- `list_files`
 - `list_projects`
 - `list_records`
 - `list_templates`
 - `list_workspaces`
 - `move_project`
+- `open_bool_editor`
 - `prompt_project`
 - `publish_project`
+- `read_file`
+- `render_project_widget`
+- `run_command`
+- `run_db_migration`
+- `save_version`
 - `update_project`
 - `update_record`
