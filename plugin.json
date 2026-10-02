@@ -1,0 +1,116 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bool",
+  "version": "1.0.0",
+  "description": "Build, edit, and publish web apps on Bool from your AI assistant, and open the Bool editor beside the conversation.",
+  "author": {
+    "name": "Bool",
+    "email": "hello@bool.com",
+    "url": "https://bool.com"
+  },
+  "homepage": "https://bool.com",
+  "repository": "https://github.com/codehs/bool-cursor-plugin",
+  "license": "MIT",
+  "keywords": [
+    "bool",
+    "web apps",
+    "app builder",
+    "websites",
+    "publish"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Bool",
+        "shortDescription": "Build and publish web apps",
+        "longDescription": "Describe an app and ChatGPT builds it on Bool: the code, a database, and sign-in when the app needs them. When a build is saved, the app appears in the conversation, and you can open the full Bool editor beside the chat to see the live preview, its data, and its version history. Ask for changes in plain language, add an image you share or one ChatGPT generates, set the app's icon, and publish it to a live URL when it's ready.\n\nBool works on the projects in your connected Bool account. Changes are saved as versions you can restore, and nothing goes live until you ask to publish. Bool doesn't process payments in ChatGPT.",
+        "developerName": "Bool",
+        "category": "Productivity",
+        "capabilities": [
+          "Build web apps",
+          "Edit existing apps",
+          "Add images and app icons",
+          "Publish to a live URL",
+          "Open the Bool editor"
+        ],
+        "websiteURL": "https://bool.com",
+        "supportURL": "https://bool.com/support",
+        "privacyPolicyURL": "https://bool.com/privacy",
+        "termsOfServiceURL": "https://bool.com/terms",
+        "defaultPrompt": [
+          "Make me a habit tracker where I can check off habits each day.",
+          "Show me my Bool projects.",
+          "Publish my blog and give me the link."
+        ],
+        "brandColor": "#0166FD",
+        "brandColorDark": "#4D8DFF",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Build a new app",
+              "prompt": "Make me a simple tip calculator where I enter the bill, pick a tip percentage, and split it between people.",
+              "tools_triggered": "create_project, get_build_guide, list_files, read_file, create_file, edit_file, build_app, save_version",
+              "expected_behavior": "Creates a new Bool project, builds the calculator, and saves a version. The Bool editor card shows the working calculator. The project stays unpublished."
+            },
+            {
+              "description": "Change an existing app",
+              "prompt": "In my Blog project, add a short subtitle under the site title that says \"Notes on software and startups\".",
+              "tools_triggered": "list_projects, get_build_guide, read_file, edit_file, build_app, save_version",
+              "expected_behavior": "Finds the existing Blog project, edits it, builds, and saves a version. The editor card shows the subtitle and the rest of the blog is unchanged."
+            },
+            {
+              "description": "Show the user's projects",
+              "prompt": "Show me my Bool projects.",
+              "tools_triggered": "open_bool_editor",
+              "expected_behavior": "Opens the Bool editor's project list, showing the account's projects (CRM, Sprint tracker, Blog, Events)."
+            },
+            {
+              "description": "Publish an app",
+              "prompt": "Publish my Sprint tracker and give me the link.",
+              "tools_triggered": "list_projects, publish_project",
+              "expected_behavior": "Publishes the Sprint tracker and returns its live URL, which opens the app."
+            },
+            {
+              "description": "Set an app icon from an image",
+              "prompt": "Make the attached image the app icon for my Events project.",
+              "tools_triggered": "list_projects, set_project_icon",
+              "expected_behavior": "Sets the attached image as the Events project's app icon and confirms it.",
+              "file_attachment_urls": [
+                "https://raw.githubusercontent.com/codehs/bool-cursor-plugin/main/assets/logo.png"
+              ]
+            }
+          ],
+          "negative": [
+            {
+              "description": "Request unrelated to building apps",
+              "prompt": "What's the weather in Paris today?",
+              "expected_behavior": "Answers without calling any Bool tool. Bool is for building and managing apps, not general questions."
+            },
+            {
+              "description": "Vague destructive request",
+              "prompt": "Clean up my Bool projects.",
+              "expected_behavior": "Doesn't delete anything. Asks which projects the user means and confirms before any deletion, since deleting a project can't be undone."
+            },
+            {
+              "description": "Project outside the connected account",
+              "prompt": "Edit the Bool project called Acme Payroll that my old coworker made.",
+              "expected_behavior": "Doesn't edit anything. Bool only reaches projects the connected account can access, so it says it can't find or open that project."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Bool does not sell products or process payments in ChatGPT."
+      },
+      "publication": {
+        "countries": [
+          "US"
+        ],
+        "release_notes": "First ChatGPT release: build and edit Bool apps from the conversation, see them in the Bool editor, add images and app icons, and publish to a live URL."
+      }
+    }
+  }
+}
