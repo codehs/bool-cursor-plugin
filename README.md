@@ -46,7 +46,7 @@ Cursor reviews listings by hand. Open source is required. Updates are reviewed t
 ## Layout
 
 - `.cursor-plugin/plugin.json` — marketplace manifest
-- `mcp.json` — url-only Bool MCP (`https://bool.com/api/mcp`)
+- `mcp.json` — Bool MCP over Streamable HTTP (`https://bool.com/api/mcp`), in the Agent Plugins format
 - `skills/bool/SKILL.md` — when to use Bool tools
 - `assets/logo.svg` — Bool mark
 - `LICENSE` — MIT
