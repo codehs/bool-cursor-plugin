@@ -25,7 +25,7 @@
         "shortDescription": "Make your own apps and tools",
         "longDescription": "Bool turns a description into a working web app, so you can make the tools you need without writing code: a habit tracker, a team CRM, a sign-up form, a project dashboard. ChatGPT builds the app on Bool, with a database and sign-in when it needs them. When a build is saved, the app appears in the conversation, and you can open the full Bool editor beside the chat to see the live preview, its data, and its version history. Ask for changes in plain language, add an image you share or one ChatGPT generates, set the app's icon, and publish it to a live URL when it's ready.\n\nBool works on the projects in your connected Bool account. Changes are saved as versions you can restore, and nothing goes live until you ask to publish. Bool doesn't process payments in ChatGPT.",
         "developerName": "Bool",
-        "category": "Productivity",
+        "category": "Developer Tools",
         "capabilities": [
           "Build web apps",
           "Edit existing apps",
