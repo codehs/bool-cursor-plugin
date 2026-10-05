@@ -102,6 +102,7 @@
             }
           ]
         },
+        "demo_recording_url": "https://youtu.be/9FEOeMe_tcM",
         "commerce": false,
         "commerce_description": "Bool does not sell products or process payments in ChatGPT."
       },
