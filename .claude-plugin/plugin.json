@@ -1,13 +1,19 @@
 {
   "name": "bool",
-  "version": "0.1.0",
-  "description": "Official Bool plugin. Connects Grok Build to Bool's hosted MCP so agents can create, build, and publish Bool apps.",
+  "version": "1.0.1",
+  "description": "Build, edit, and publish web apps on Bool from your AI assistant, and open the Bool editor beside the conversation.",
   "author": {
-    "name": "Bool",
+    "name": "CodeHS",
     "email": "hello@bool.com"
   },
   "homepage": "https://bool.com",
-  "repository": "https://github.com/codehs/bool-cursor-plugin",
+  "repository": "https://github.com/codehs/bool-plugin",
   "license": "MIT",
-  "keywords": ["bool", "build a bool app"]
+  "keywords": [
+    "bool",
+    "mcp",
+    "app-builder",
+    "web-apps",
+    "publish"
+  ]
 }

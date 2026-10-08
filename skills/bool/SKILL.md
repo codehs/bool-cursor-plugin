@@ -15,7 +15,7 @@ Docs: [bool.com/docs/mcp](https://bool.com/docs/mcp)
 
 ## Connect
 
-1. Enable this plugin's `bool` MCP server in your client (Grok Build, Cursor, or any MCP client).
+1. Enable this plugin's `bool` MCP server in your client.
 2. Complete Bool OAuth. The connector URL is `https://bool.com/api/mcp`. Protected-resource metadata lives at `https://bool.com/.well-known/oauth-protected-resource`.
 3. Do not add a second Bool MCP server. Do not paste a personal MCP URL. Do not put API keys or tokens in this plugin.
 
@@ -31,7 +31,8 @@ You build the app yourself. Bool's own AI runs only when the user asks for it.
 - Build: `get_build_guide` for that `project_id`, and follow it. Read and edit with `list_files`, `read_file`, `create_file`, and `edit_file`. Use `delete_file`, `run_command`, `define_entity`, and `run_db_migration` when the guide calls for them. Run `build_app` until it passes, then `save_version`.
 - Iterate: the same loop on the existing project. Read its files first. Do not create a new project.
 - Publish: `publish_project` only when the user wants the app live.
-- Bool's AI: when the user asks for it, `prompt_project` on an existing project, then poll `get_project_status` until the turn finishes.
+- Bool's AI: when the user asks for it, `prompt_project` on an existing project, then poll `get_project_status` until the turn finishes. `cancel_project_turn` stops it.
+- Images: `add_image` saves an image the user shared, or one you generated, into the project's files. `set_project_icon` makes an image the app's icon.
 - Templates: `list_templates` before passing `template` to `create_project`.
 - Remix: `fork_project` (user-facing word is remix). Then the build loop if they want changes.
 - Show projects: `open_bool_editor`. In clients that can't show the Bool editor, `render_project_widget` shows a status card.
@@ -53,7 +54,9 @@ Record tools (`list_records`, `create_records`, `update_record`, `delete_record`
 
 Use only these names. Do not invent tools.
 
+- `add_image`
 - `build_app`
+- `cancel_project_turn`
 - `create_file`
 - `create_project`
 - `create_records`
@@ -82,5 +85,6 @@ Use only these names. Do not invent tools.
 - `run_command`
 - `run_db_migration`
 - `save_version`
+- `set_project_icon`
 - `update_project`
 - `update_record`

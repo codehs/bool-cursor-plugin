@@ -1,15 +1,15 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "bool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Build, edit, and publish web apps on Bool from your AI assistant, and open the Bool editor beside the conversation.",
   "author": {
-    "name": "Bool",
+    "name": "CodeHS",
     "email": "hello@bool.com",
     "url": "https://bool.com"
   },
   "homepage": "https://bool.com",
-  "repository": "https://github.com/codehs/bool-cursor-plugin",
+  "repository": "https://github.com/codehs/bool-plugin",
   "license": "MIT",
   "keywords": [
     "bool",
@@ -24,7 +24,7 @@
         "displayName": "Bool",
         "shortDescription": "Make your own apps and tools",
         "longDescription": "Bool turns a description into a working web app, so you can make the tools you need without writing code: a habit tracker, a team CRM, a sign-up form, a project dashboard. ChatGPT builds the app on Bool, with a database and sign-in when it needs them. When a build is saved, the app appears in the conversation, and you can open the full Bool editor beside the chat to see the live preview, its data, and its version history. Ask for changes in plain language, add an image you share or one ChatGPT generates, set the app's icon, and publish it to a live URL when it's ready.\n\nBool works on the projects in your connected Bool account. Changes are saved as versions you can restore, and nothing goes live until you ask to publish. Bool doesn't process payments in ChatGPT.",
-        "developerName": "Bool",
+        "developerName": "CodeHS",
         "category": "Developer Tools",
         "capabilities": [
           "Build web apps",
@@ -80,7 +80,7 @@
               "tools_triggered": "list_projects, set_project_icon",
               "expected_behavior": "Sets the attached image as the Events project's app icon and confirms it.",
               "file_attachment_urls": [
-                "https://raw.githubusercontent.com/codehs/bool-cursor-plugin/main/assets/logo.png"
+                "https://raw.githubusercontent.com/codehs/bool-plugin/main/assets/logo.png"
               ]
             }
           ],
@@ -110,7 +110,7 @@
         "countries": [
           "US"
         ],
-        "release_notes": "First ChatGPT release: build and edit Bool apps from the conversation, see them in the Bool editor, add images and app icons, and publish to a live URL."
+        "release_notes": "Corrects create_project's tool annotations (it creates a blank, private project, so it's additive and not open-world) and lists CodeHS, Inc., the verified business that operates Bool, as the developer."
       }
     }
   }

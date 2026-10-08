@@ -1,56 +1,44 @@
-# Bool for Cursor
+# Bool plugin
 
-Official [Cursor](https://cursor.com) and Grok Bot plugin for [Bool](https://bool.com).
+The official plugin for [Bool](https://bool.com), which builds and publishes web apps from a description. Bool is operated by CodeHS, Inc.
 
-This is a thin connector. It points at Bool's hosted Streamable HTTP MCP at `https://bool.com/api/mcp` and ships a skill for when to use those tools. It does not run an MCP server, wrap REST, or store API keys.
-
-The plugin is free. The source is public. The license is MIT.
-
-Listing on the Cursor Marketplace is free. The plugin collects no extra data beyond what Bool's official MCP and OAuth already handle. Users authenticate with Bool. This repo has no secrets. Bool does not use user content from this connector to train models.
-
-## Terms and support
-
-- [Bool Terms](https://bool.com/terms/)
-- [Bool Privacy](https://bool.com/privacy/)
-- [MCP docs](https://bool.com/docs/mcp)
-- Support: [hello@bool.com](mailto:hello@bool.com)
-- [Cursor Marketplace Publisher Terms](https://cursor.com/marketplace-publisher-terms)
-- [Marketplace security](https://cursor.com/help/security-and-privacy/marketplace-security)
+The plugin connects an AI assistant to Bool's hosted MCP server at `https://bool.com/api/mcp` and adds a skill that tells the assistant how to use Bool's tools. It runs no server of its own and holds no secrets. Users sign in with their Bool account through OAuth. The license is MIT.
 
 ## Install
 
-1. In Cursor: Customize / Marketplace → search **Bool** → Add.
-2. In Grok Bot: Settings → Plugins → search **Bool** → Add.
-3. Connect the `bool` MCP server and finish Bool OAuth.
-
-Do not add headers, a `type` field, or a `BOOL_API_KEY` plugin variable. Cursor discovers OAuth from Bool's protected-resource metadata.
-
-## Local test
-
-Copy this folder to `~/.cursor/plugins/local/bool` and reload the window (Developer: Reload Window). Then connect `bool` and sign in with Bool.
-
-```bash
-cp -R . ~/.cursor/plugins/local/bool
-```
-
-On Teams and Enterprise, local plugin imports may be off until an admin allows them.
-
-## Submit
-
-Submit this public GitHub repo at [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish):
-
-`https://github.com/codehs/bool-cursor-plugin`
-
-Cursor reviews listings by hand. Open source is required. Updates are reviewed the same way. Pushes to this repo do not publish on their own.
+| Client | How |
+|---|---|
+| ChatGPT and Codex | Search **Bool** in the plugin directory once it's listed. |
+| Cursor | Customize, then Marketplace, then search **Bool**. |
+| Grok Build | Settings, then Plugins, then search **Bool**. |
+| Any other MCP client | Add `https://bool.com/api/mcp` as a remote MCP server and sign in with Bool. |
 
 ## Layout
 
-- `.cursor-plugin/plugin.json` — marketplace manifest
-- `mcp.json` — Bool MCP over Streamable HTTP (`https://bool.com/api/mcp`), in the Agent Plugins format
-- `skills/bool/SKILL.md` — when to use Bool tools
-- `assets/logo.svg` — Bool mark
-- `LICENSE` — MIT
+One repo serves every client. The shared parts follow the [Agent Plugins](https://agent-plugins.org) format, which ChatGPT, Codex, Cursor, VS Code and GitHub Copilot read directly. Each client that needs more gets a small file of its own.
 
-## License
+| Path | Read by | Holds |
+|---|---|---|
+| `plugin.json` | Agent Plugins clients | Name, version, publisher. The OpenAI listing, review cases and release notes live under `extensions.com.openai`. |
+| `mcp.json` | Agent Plugins clients | The `bool` server, over Streamable HTTP. |
+| `skills/bool/SKILL.md` | Every client | When and how to use Bool's tools. |
+| `assets/` | Every client | Icon, logo and wordmark. |
+| `.cursor-plugin/plugin.json` | Cursor | Display name and logo. |
+| `.claude-plugin/plugin.json`, `.mcp.json` | Claude Code, Grok Build | The same plugin in their manifest format. |
 
-MIT. See [LICENSE](LICENSE).
+Keep the version the same in all three manifests. CI checks it.
+
+## Release to the OpenAI plugin directory
+
+```bash
+scripts/build-openai-zip.sh
+```
+
+The script writes `dist/bool-<version>.zip` with only what OpenAI reads: `plugin.json`, `mcp.json`, `skills/`, `assets/`, `README.md` and `LICENSE`. Upload it from the Bool plugin's page in the OpenAI Platform with **Upload plugin to make changes**. The **Upload new or existing plugin** button on the Plugins list creates a separate plugin.
+
+## Support
+
+- [Terms](https://bool.com/terms)
+- [Privacy](https://bool.com/privacy)
+- [MCP docs](https://bool.com/docs/mcp)
+- [hello@bool.com](mailto:hello@bool.com)
