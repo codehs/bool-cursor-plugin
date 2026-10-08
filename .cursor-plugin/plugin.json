@@ -1,15 +1,21 @@
 {
   "name": "bool",
   "displayName": "Bool",
-  "version": "0.1.0",
-  "description": "Official Cursor and Grok Bot plugin for Bool. Connects to Bool's MCP so agents can create, build, and publish Bool apps.",
+  "version": "1.0.1",
+  "description": "Build, edit, and publish web apps on Bool from your AI assistant, and open the Bool editor beside the conversation.",
   "author": {
-    "name": "Bool",
+    "name": "CodeHS",
     "email": "hello@bool.com"
   },
   "homepage": "https://bool.com",
-  "repository": "https://github.com/codehs/bool-cursor-plugin",
+  "repository": "https://github.com/codehs/bool-plugin",
   "license": "MIT",
-  "keywords": ["bool", "mcp", "app-builder", "deploy"],
+  "keywords": [
+    "bool",
+    "mcp",
+    "app-builder",
+    "web-apps",
+    "publish"
+  ],
   "logo": "assets/logo.svg"
 }
